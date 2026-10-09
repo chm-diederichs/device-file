@@ -41,7 +41,7 @@ test('lockable', async function (t) {
   await b.close()
 })
 
-test('reopen', async function (t) {
+test.solo('reopen', async function (t) {
   const tmp = await t.tmp()
   const p = path.join(tmp, 'TEST')
 

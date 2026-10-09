@@ -194,6 +194,7 @@ async function verifyDeviceFile(device) {
   }
 
   if (created && Math.abs(modified - created) >= MODIFIED_SLACK) {
+    console.log(created, modified)
     await teardown()
     throwDeviceFileError('Invalid device file, was modified', true)
   }

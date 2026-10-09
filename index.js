@@ -193,12 +193,13 @@ async function verifyDeviceFile(device) {
     throwDeviceFileError('Invalid device file, inode was updated', true)
   }
 
+  console.log('--- stat ---')
+  console.log('created at:', created)
+  console.log('modified at:', modified)
+  console.log('diff:', modified - created)
+  console.log('now:', Date.now())
+
   if (created && Math.abs(modified - created) >= MODIFIED_SLACK) {
-    console.log('--- stat ---')
-    console.log('created at:', created)
-    console.log('modified at:', modified)
-    console.log('diff:', modified - created)
-    console.log('now:', Date.now())
     await teardown()
     throwDeviceFileError('Invalid device file, was modified', true)
   }
